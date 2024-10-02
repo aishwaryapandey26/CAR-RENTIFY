@@ -1,0 +1,153 @@
+<p>update-car works!</p>
+<div style="margin-top: 150px;">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="working...">
+    <div class="parent">
+      <div class="child">
+        <div nz-row class="imgDiv">
+          <h2 style="margin-left: 120px;">Update Car</h2>
+        </div>
+
+        <form nz-form [formGroup]="updateForm" >
+          <div nz-row>
+            <!---File Upload Section -->
+           
+            <div class="file-upload-container">
+              <label class="file-upload-label">
+                <span style="margin-left: 100px;">Select a File</span>
+                <input
+                  type="file"
+                  nz-button
+                  nzType="primary"
+                  accept="image/x-png,image/gif,image/jpeg"
+                  (change)="onFileSelected($event)"
+                />
+              </label>
+
+              <div *ngIf="imagePreview" class="image-preview">
+                <div class="circle-image">
+                  <img [src]="imagePreview" alt="Image Preview" class="preview-image" />
+                </div>
+              </div>
+            </div>
+            
+
+            <!-- Existing Image Display -->
+            <div *ngIf="existingImage" class="image-preview">
+              <div class="circle-image">
+                <img [src]="existingImage" alt="Existing Image" class="preview-image" />
+              </div>
+            </div>
+
+            <!-- Brand Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+                  <nz-select nzShowSearch nzAllowClear nzPlaceholder="Select a brand name" formControlName="brand">
+                    <nz-option
+                      *ngFor="let brand of listOfBrands"
+                      [nzLabel]="brand"
+                      [nzValue]="brand"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Name Input -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+                  <input nz-input placeholder="Name" formControlName="name" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Type Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required!">
+                  <nz-select nzShowSearch nzAllowClear nzPlaceholder="Select a type" formControlName="type">
+                    <nz-option
+                      *ngFor="let type of listOfType"
+                      [nzLabel]="type"
+                      [nzValue]="type"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Transmission Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required!">
+                  <nz-select nzShowSearch nzAllowClear nzPlaceholder="Select a transmission" formControlName="transmission">
+                    <nz-option
+                      *ngFor="let transmission of listOfTransmission"
+                      [nzLabel]="transmission"
+                      [nzValue]="transmission"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Color Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required!">
+                  <nz-select nzShowSearch nzAllowClear nzPlaceholder="Select a color" formControlName="color">
+                    <nz-option
+                      *ngFor="let color of listOfColor"
+                      [nzLabel]="color"
+                      [nzValue]="color"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Year Picker -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required!">
+                  <nz-year-picker nzPlaceholder="Model Year" formControlName="year" style="width: 100%;"></nz-year-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Price Input -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required!">
+                  <input nz-input placeholder="Price" formControlName="price" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Description Textarea -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required!">
+                  <textarea
+                    rows="1"
+                    nz-input
+                    placeholder="Description"
+                    formControlName="description"
+                  ></textarea>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Submit Button -->
+            <div nz-col nzSpan="24">
+              <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"  (click)="updateCar()">
+                Update
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>

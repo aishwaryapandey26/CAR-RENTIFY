@@ -1,9 +1,21 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
-import express from 'express';
-import { fileURLToPath } from 'node:url';
+
+import express, { NextFunction, Request, Response } from 'express';
 import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import bootstrap from './src/main.server';
+
+const server = express();
+
+server.get('**', (req: Request, res: Response, next: NextFunction) => {
+  res.send('Hello World');
+});
+
+server.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {

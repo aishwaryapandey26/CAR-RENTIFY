@@ -1,0 +1,48 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <nz-spin [nzSpinning]="isSpinning">
+    <div>
+      <label>Name:</label>
+      <input formControlName="name" />
+      <div *ngIf="signupForm.get('name')?.invalid && (signupForm.get('name')?.touched || submitted)">
+        <small *ngIf="signupForm.get('name')?.errors?.required">Name is required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Email:</label>
+      <input formControlName="email" type="email" />
+      <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || submitted)">
+        <small *ngIf="signupForm.get('email')?.errors?.required">Email is required.</small>
+        <small *ngIf="signupForm.get('email')?.errors?.email">Invalid email format.</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Password:</label>
+      <input formControlName="password" type="password" />
+      <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || submitted)">
+        <small *ngIf="signupForm.get('password')?.errors?.required">Password is required.</small>
+        <small *ngIf="signupForm.get('password')?.errors?.minlength">Minimum length is 8 characters.</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Confirm Password:</label>
+      <input formControlName="confirmPassword" type="password" />
+      <div *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.touched || submitted)">
+        <small *ngIf="signupForm.get('confirmPassword')?.errors?.required">Confirm password is required.</small>
+        <small *ngIf="signupForm.get('confirmPassword')?.errors?.confirm">Passwords do not match.</small>
+      </div>
+    </div>
+
+    <div>
+      <label>Username:</label>
+      <input formControlName="username" />
+      <div *ngIf="signupForm.get('username')?.invalid && (signupForm.get('username')?.touched || submitted)">
+        <small *ngIf="signupForm.get('username')?.errors?.required">Username is required.</small>
+      </div>
+    </div>
+
+    <button type="submit">Sign Up</button>
+  </nz-spin>
+</form>
