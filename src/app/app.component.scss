@@ -1,0 +1,26 @@
+.main-header {
+  background-color: bisque;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-title a {
+  color: black !important;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.new-links a {
+  color: rgb(138, 93, 190);
+  margin-left: 15px;
+}
+
+.new-links a:last-child {
+  margin-right: 0;
+}
+
+.nav-links a {
+  margin-left: 15px;
+}

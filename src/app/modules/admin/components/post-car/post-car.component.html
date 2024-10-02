@@ -1,0 +1,170 @@
+<div style="margin-top: 50px">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="working..">
+    <div class="parent">
+      <div class="child">
+        <div nz-row class="imgDiv">
+          <h2 style="margin-left: 230px">Post Car</h2>
+        </div>
+
+        <form nz-form [formGroup]="postCarform">
+          <div nz-row>
+            <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+              <div class="profile-badge">
+                <label for="upload_profile_image" class="upload-label" *ngIf="selectedFile">
+                  <img class="profile" [src]="imagePreview" alt="profile" />
+                </label>
+                <input
+                  type="file"
+                  nz-button
+                  nzType="primary"
+                  id="upload-profile_image"
+                  accept="image/x-png,image/gif,image/jpeg"
+                  (change)="onFileSelected($event)"
+                />
+                <button nz-button nzShape="circle"></button>
+              </div>
+            </div>
+
+            <!-- Brand Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required">
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Select a brand name"
+                    formControlName="brand" 
+                    required
+                  >
+                    <nz-option
+                      *ngFor="let brand of listOfBrands"
+                      [nzLabel]="brand"
+                      [nzValue]="brand"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Name Input -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required">
+                  <input
+                    nz-input
+                    placeholder="Name"
+                    formControlName="name"
+                    required
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Type Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required">
+                  <nz-select>
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Select a type"
+                    formControlName="type" <!-- Fixed typo here -->
+                    required
+                  >
+                    <nz-option
+                      *ngFor="let type of listOfType"
+                      [nzLabel]="type"
+                      [nzValue]="type"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Transmission Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required">
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Select a transmission"
+                    formControlName="transmission"
+                    required
+                  >
+                    <nz-option
+                      *ngFor="let transmission of listOfTransmission"
+                      [nzLabel]="transmission"
+                      [nzValue]="transmission"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Color Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required">
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Select a color"
+                    formControlName="color"
+                    required
+                  >
+                    <nz-option
+                      *ngFor="let color of listOfColor"
+                      [nzLabel]="color"
+                      [nzValue]="color"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Price Selection -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback nzErrorTip="This input is required">
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Select a price"
+                    formControlName="price"
+                  >
+                    <nz-option
+                      *ngFor="let price of listOfPrices"
+                      [nzLabel]="price"
+                      [nzValue]="price"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <!-- Description -->
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required">
+                  <textarea
+                    rows="3"
+                    nz-input
+                    placeholder="Description"
+                    formControlName="description"
+                    required
+                  ></textarea>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <!-- Post Car Button -->
+          <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="postCar()">
+            Post Car
+          </button>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>

@@ -1,0 +1,17 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+, 
+    "target": "ES2022",
+    "module": "ESNext",
+    "strict": true,
+    "noImplicitAny": false,
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "useDefineForClassFields": false
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true
+  }
+}

@@ -1,0 +1,42 @@
+\<!-- src/app/app.component.html -->
+<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+  <header class="main-header custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/login">CAR RENTAL PORTAL</a>
+    </div>
+
+    <div class="new-links">
+      <a class="btn btn-link" routerLink="/register" routerLinkActive="active">SIGN UP</a>
+      <a class="btn btn-link" routerLink="/login" routerLinkActive="active">LOGIN</a>
+    </div>
+  </header>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <header class="main-header custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/admin/dashboard">LoggedIn Admin</a>
+    </div>
+    <div class="nav-links">
+      <a class="btn btn-link" routerLink="/admin/bookingsa" routerLinkActive="active">Bookings</a>
+      <a class="btn btn-link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a class="btn btn-link" routerLink="/admin/car" routerLinkActive="active">Post Car</a>
+      <a class="btn btn-link" (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+  </header>
+</div>
+
+<div *ngIf="isCustomerLoggedIn">
+  <header class="main-header custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/customer/dashboard">LoggedIn Customer</a>
+    </div>
+    <div class="nav-links">
+      <a class="btn btn-link" routerLink="/customer/my_booking" routerLinkActive="active">My Bookings</a>
+      <a class="btn btn-link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
+      <a class="btn btn-link" (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+  </header>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,40 @@
+<h1>Login works</h1>
+<div class="bg login-bg"> <!-- Use a class for background styling -->
+  <div class="child">
+    <div class="imgDiv">
+      <div>
+        <h1 style="text-align: center;">LOGIN</h1>
+      </div>
+    </div>
+
+    <!-- Updated Template-Driven Form -->
+    <form #loginForm="ngForm" (ngSubmit)="login()"> <!-- Template-driven form -->
+
+      <!-- Email field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="loginForm.controls.email.value" required id="email">
+        <div *ngIf="loginForm.submitted && !loginForm.controls.email.value" class="error">
+          Please input your email
+        </div>
+      </div>
+
+      <!-- Password field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="loginForm.controls.password.value" required id="password">
+        <div *ngIf="loginForm.submitted && !loginForm.controls.password.value" class="error">
+          Please input your password
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary login-form-button login-form-margin" [disabled]="!loginForm.valid">
+        LOG IN
+      </button>
+
+      <!-- Register link -->
+      Or <a routerLink="/register">REGISTER NOW</a>
+    </form>
+  </div>
+</div>
